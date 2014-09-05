@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Icon</title>
+    <style>
+    body {
+      width: 30em;
+      margin: 0 auto;
+      font-family: Consolas, Meiryo, monospace;
+    }
+
+    h1, a {
+      color: #888;
+    }
+
+    h1::before {
+      position: absolute;
+      margin-left: -.75em;
+      color: #ccc;
+      content: '+';
+    }
+
+    a {
+      padding: .2em 0;
+      border-bottom: 2px dotted #888;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #555;
+      background: #ccc;
+    }
+
+    canvas {
+      display: block;
+      margin: 1em 0;
+      cursor: pointer;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>icon.js</h1>
+    <canvas id="cv" width="256" height="256"></canvas>
+    <p>code: <a href="icon.js">icon.js</a></p>
+    <script src="icon.js"></script>
+  </body>
+</html>
