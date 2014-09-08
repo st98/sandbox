@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>st98/sandbox</title>
+    <style>
+    body {
+      width: 30em;
+      margin: 0 auto;
+      font-family: Consolas, Meiryo, monospace;
+      line-height: 2.0;
+    }
+
+    h1, a {
+      color: #888;
+    }
+
+    h1::before {
+      position: absolute;
+      margin-left: -.75em;
+      color: #ccc;
+      content: '+';
+    }
+
+    a {
+      padding: .2em 0;
+      border-bottom: 2px dotted #888;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #555;
+      background: #ccc;
+    }
+
+    li {
+      list-style: square;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>st98/sandbox</h1>
+    <ul id="ul"></ul>
+    <p>code: <a href="repo.js">repo.js</a></p>
+    <script src="repo.js"></script>
+  </body>
+</html>
