@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Caesar Cipher</title>
+    <style>
+    body {
+      width: 30em;
+      margin: 0 auto;
+      font-family: Consolas, Meiryo, monospace;
+      line-height: 2em;
+    }
+
+    h1, h2, a {
+      color: #888;
+    }
+
+    h1::before, h2::before {
+      position: absolute;
+      margin-left: -.75em;
+      color: #ccc;
+    }
+
+    h1::before {
+      content: '+';
+    }
+
+    h2::before {
+      content: '-';
+    }
+
+    a {
+      padding: .2em 0;
+      border-bottom: 2px dotted #888;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #555;
+      background: #ccc;
+    }
+
+    input {
+      vertical-align: middle;
+    }
+
+    textarea {
+      padding: 1em;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Caesar Cipher</h1>
+    <h2>Plaintext</h2>
+    <textarea id="plaintext" rows="10" cols="60"></textarea>
+    <h2>Ciphertext</h2>
+    <textarea id="ciphertext" rows="10" cols="60" readonly></textarea>
+    <label>Right Shift (0 - 26): <input type="range" id="range" min="0" max="26" value="0"></label>
+    <p>code: <a href="caesar.js">caesar.js</a></p>
+    <script src="caesar.js"></script>
+  </body>
+</html>
