@@ -1,5 +1,5 @@
 window.addEventListener('load', function main() {
-  var plaintext, ciphertext, range;
+  var plaintext, ciphertext, range, val;
 
   function crypt(str, n) {
     var i, c, result = '';
@@ -19,9 +19,11 @@ window.addEventListener('load', function main() {
   plaintext = document.getElementById('plaintext');
   ciphertext = document.getElementById('ciphertext');
   range = document.getElementById('range');
+  val = document.getElementById('val').firstChild;
 
   function update() {
     ciphertext.value = crypt(plaintext.value, parseInt(range.value, 10));
+    val.nodeValue = '(+' + range.value + ')';
   }
 
   plaintext.addEventListener('keyup', update);
