@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>box-sizing-1</title>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Consolas;
+    }
+    div {
+      width: 25px;
+      height: 25px;
+      margin: 2px;
+      border: 2px solid black;
+    }
+    #content-box {
+      background: red;
+      box-sizing: content-box;
+    }
+    #padding-box {
+      background: green;
+      box-sizing: padding-box;
+    }
+    #border-box {
+      background: blue;
+      box-sizing: border-box;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>box-sizing-1</h1>
+    <h2>content-box</h2>
+    <div id="content-box"></div>
+    <h2>padding-box</h2>
+    <div id="padding-box"></div>
+    <h2>border-box</h2>
+    <div id="border-box"></div>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>マンデルブロ集合。</title>
+    <style>
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>マンデルブロ集合。</h1>
+    <canvas id="cv" width="480" height="480"></canvas>
+    <script>
+    var cv = document.getElementById('cv');
+    var ctx = cv.getContext('2d');
+    var w = cv.width, h = cv.height;
+
+    var minx = -2.25, maxx = 0.75, miny = -1.5, maxy = 1.5;
+    var stepx = (maxx - minx) / w, stepy = (maxy - miny) / h, limit = 100;
+
+    var im = ctx.getImageData(0, 0, w, h);
+    var d = im.data;
+
+    for (var cx = 0; cx < w; cx++) {
+      for (var cy = 0; cy < h; cy++) {
+        var a = minx + stepx * cx;
+        var b = maxy - stepy * cy;
+        var x = 0, y = 0, t;
+
+        for (var i = 0; i < limit; i++) {
+          t = x * x - y * y + a;
+          y = 2 * x * y + b;
+          x = t;
+          if ((x * x + y * y) > 8) break;
+        }
+
+        if (i >= limit) {
+          i = 0;
+        }
+
+        d[4 * (cy * w + cx) + 0] = d[4 * (cy * w + cx) + 1] = d[4 * (cy * w + cx) + 2] = Math.min(Math.floor(i * 255 / 50), 255);
+        d[4 * (cy * w + cx) + 3] = 255;
+      }
+    }
+    ctx.putImageData(im, 0, 0);
+    </script>
+    ソースコード: <a href="https://gist.github.com/st98/b14511aa28b8e3303971">https://gist.github.com/st98/b14511aa28b8e3303971</a>
+  </body>
+</html>

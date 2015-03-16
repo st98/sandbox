@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>marquee</title>
+  </head>
+  <body>
+    <a href="https://gist.github.com/st98/0ac9abdddb1f09d0a50d">source</a>
+    <script>
+      var t = document.getElementsByTagName('title')[0].firstChild;
+      var s = t.nodeValue, i = 0;
+      function f() {
+        i = (i + 1) % s.length;
+        t.nodeValue = s.slice(i) + s.slice(0, i);
+      }
+      setInterval(f, 250);
+    </script>
+  </body>
+</html>

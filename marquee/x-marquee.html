@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>x-marquee</title>
+  </head>
+  <body>
+    <p><x-marquee>marquee</x-marquee> | <x-marquee>marquee</x-marquee></p>
+    <a href="https://gist.github.com/st98/0fff653a504d8a5627fc">source</a>
+    <script>
+      document.registerElement('x-marquee');
+      Array.prototype.forEach.call(document.getElementsByTagName('x-marquee'), function (e) {
+        var s = e.textContent, i = 0;
+        setInterval(function () {
+          i = (i + 1) % s.length;
+          e.textContent = s.slice(i) + s.slice(0, i);
+        }, 250);
+      });
+    </script>
+  </body>
+</html>
