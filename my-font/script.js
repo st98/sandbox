@@ -43,7 +43,7 @@ Font.prototype.draw = function (text, x, y, w, h, color) {
   color = typeof color === 'undefined' ? 15 : color;
   for (var i = 0; i < text.length; i++) {
     var c = text.charCodeAt(i);
-    this.ctx.drawImage(this.map[color], c * this.width, 0, this.width, this.height, x + i * this.width, y, w, h);
+    this.ctx.drawImage(this.map[color], c * this.width, 0, this.width, this.height, x + i * w, y, w, h);
   }
 };
 function init() {
