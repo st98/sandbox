@@ -37,10 +37,11 @@ Font.prototype.createMap = function (c) {
   ctx.putImageData(imd, 0, 0);
   this.map.push(cv);
 };
-Font.prototype.draw = function (text, x, y, w, h, color) {
-  w = w || this.width;
-  h = h || this.width;
-  color = typeof color === 'undefined' ? 15 : color;
+Font.prototype.draw = function (text, x, y, opts) {
+  opts = opts || {};
+  w = opts.w || this.width;
+  h = opts.h || this.width;
+  color = 'color' in opts ? opts.color : 15;
   for (var i = 0; i < text.length; i++) {
     var c = text.charCodeAt(i);
     this.ctx.drawImage(this.map[color], c * this.width, 0, this.width, this.height, x + i * w, y, w, h);
@@ -78,6 +79,9 @@ function init() {
       height: 8,
       colors: cs
     });
+    draw(font, cs.length);
+  }
+  function draw(font, n) {
     var a = [];
     for (var x = 0; x < 32; x++) {
       for (var y = 0; y < 32; y++) {
@@ -102,9 +106,11 @@ function init() {
       if (i === a.length) {
         return;
       }
-      var c = randint(cs.length);
+      var c = randint(n);
       var s = 0x41 + randint(26);
-      font.draw(String.fromCharCode(s), a[i][0] * 8, a[i][1] * 8, 8, 8, c);
+      font.draw(String.fromCharCode(s), a[i][0] * 8, a[i][1] * 8, {
+        color: c
+      });
       i++;
       setTimeout(loop, 1000 / 15);
     }
