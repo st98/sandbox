@@ -18,8 +18,7 @@
           get_local $i
           i32.const 15
           i32.rem_u
-          i32.const 0
-          i32.eq
+          i32.eqz
           if
             call $fizzbuzz
             br 1
@@ -28,8 +27,7 @@
           get_local $i
           i32.const 3
           i32.rem_u
-          i32.const 0
-          i32.eq
+          i32.eqz
           if
             call $fizz
             br 1
@@ -38,8 +36,7 @@
           get_local $i
           i32.const 5
           i32.rem_u
-          i32.const 0
-          i32.eq
+          i32.eqz
           if
             call $buzz
             br 1
