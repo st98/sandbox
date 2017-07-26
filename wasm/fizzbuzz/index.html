@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>FizzBuzz</title>
+    <style>
+      textarea {
+        display: block;
+      }
+    </style>
+    <script>
+      function fetchAndInstantiate(url, importObject) {
+        return fetch(url).then(resp =>
+          resp.arrayBuffer()
+        ).then(bytes =>
+          WebAssembly.instantiate(bytes, importObject)
+        ).then(results =>
+          results.instance
+        )
+      }
+
+      window.addEventListener('load', () => {
+        var output = document.getElementById('output');
+
+        function clear() {
+          output.textContent = '';
+        }
+
+        function log(arg) {
+          output.textContent += arg + '\n';
+        }
+
+        var importObject = {
+          imports: {
+            log: log,
+            fizz: arg => log('Fizz'),
+            buzz: arg => log('Buzz'),
+            fizzbuzz: arg => log('FizzBuzz')
+          }
+        };
+
+        function fizzbuzz1() {
+          fetchAndInstantiate('fizzbuzz1.wasm', importObject).then(instance => {
+            clear();
+            instance.exports.fizzbuzz(100);
+          });
+        }
+
+        function fizzbuzz2() {
+          fetchAndInstantiate('fizzbuzz2.wasm', importObject).then(instance => {
+            clear();
+            instance.exports.fizzbuzz(100);
+          });
+        }
+
+        var cls = document.getElementById('cls');
+        var button1 = document.getElementById('button1');
+        var button2 = document.getElementById('button2');
+        cls.addEventListener('click', clear, false);
+        button1.addEventListener('click', fizzbuzz1, false);
+        button2.addEventListener('click', fizzbuzz2, false);
+      }, false);
+    </script>
+  </head>
+  <body>
+    <h1>FizzBuzz (<a href="https://github.com/st98/sandbox/tree/gh-pages/wasm/fizzbuzz">source</a>)</h1>
+    <button id="cls">Clear</button>
+    <button id="button1">FizzBuzz 1</button>
+    <button id="button2">FizzBuzz 2</button>
+    <h2>Output</h2>
+    <pre id="output"></pre>
+  </body>
+</html>
