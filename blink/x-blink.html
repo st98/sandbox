@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>x-blink</title>
+  </head>
+  <body>
+    <p><x-blink>blink</x-blink> | <x-blink>blink</x-blink></p>
+    <a href="https://github.com/st98/sandbox/tree/gh-pages/blink">source</a>
+    <script>
+      class BlinkElement extends HTMLElement {
+        connectedCallback() {
+          let root = this.attachShadow({mode: 'open'});
+          root.innerHTML = `
+            <style>
+              :host {
+                animation: blink 0.5s infinite alternate;
+              }
+              @keyframes blink {
+                to {
+                  opacity: 0.0;
+                }
+              }
+            </style>
+            <slot></slot>
+          `;
+        }
+      }
+      customElements.define('x-blink', BlinkElement);
+    </script>
+  </body>
+</html>
